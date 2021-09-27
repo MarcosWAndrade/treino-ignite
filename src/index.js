@@ -30,15 +30,15 @@ app.post('/users', (request, response) => {
     
     const userExiste = users.find(user => user.username === username);
     
-    if(userExiste){
+    if(!userExiste){
 
         return response.status(404).json({ error: "username ja existe" });
     }
 
     const user = {
         id: uuidv4(), 
-        name: 'joice',
-        username: 'alves',
+        name: 'John',
+        username: 'Doe',
         todos: []
     }
     users.push(user);
@@ -111,5 +111,3 @@ app.delete('/todos/:id', checksExistsUserAccount, (request, response) => {
 });
 
 module.exports = app;
-
-app.listen(3333);
